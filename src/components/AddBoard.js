@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import BoardEditor from "./BoardEditor";
 import shortid from "shortid";
 import EditButtons from "./EditButtons";
+import PropTypes from 'prop-types';
 
 class AddBoard extends Component {
 
@@ -48,5 +49,9 @@ render() {
     );
 }
 }
+
+AddBoard.propTypes = {
+    toggleAddingBoard: PropTypes.func
+};
 
 export default connect()(AddBoard);

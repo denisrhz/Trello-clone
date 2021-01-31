@@ -3,6 +3,7 @@ import "../styles/CardEditor.css";
 import React, { Component } from "react";
 import TextareaAutosize from "react-textarea-autosize";
 import EditButtons from "./EditButtons";
+import PropTypes from 'prop-types';
 
 class CardEditor extends Component {
 state = {
@@ -46,5 +47,9 @@ render() {
     );
 }
 }
+
+CardEditor.propTypes = {
+    text: PropTypes.string
+};
 
 export default CardEditor;

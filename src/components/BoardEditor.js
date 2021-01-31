@@ -2,6 +2,7 @@ import "../styles/BoardEditor.css";
 
 import React, { Component } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import PropTypes from 'prop-types';
 
 class BoardEditor extends Component {
 ref = React.createRef();
@@ -48,5 +49,10 @@ render() {
     );
 }
 }
+
+BoardEditor.propTypes = {
+    board: PropTypes.object,
+    title: PropTypes.string
+};
 
 export default BoardEditor;

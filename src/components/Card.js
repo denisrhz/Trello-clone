@@ -6,6 +6,7 @@ import { connect } from "react-redux";
 import CardEditor from "./CardEditor";
 
 import { Draggable } from "react-beautiful-dnd";
+import PropTypes from 'prop-types';
 
 class Card extends Component {
 
@@ -85,8 +86,15 @@ class Card extends Component {
             />
             );
         }
-        }
     }
+};
+
+Card.propTypes = {
+    card: PropTypes.object,
+    cardId: PropTypes.string,
+    listId: PropTypes.string,
+    index: PropTypes.number
+};
 
 const mapStateToProps = (state, ownProps) => ({
 card: state.cardsById[ownProps.cardId]

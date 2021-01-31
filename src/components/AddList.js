@@ -5,6 +5,7 @@ import { connect } from "react-redux";
 import ListEditor from "./ListEditor";
 import shortid from "shortid";
 import EditButtons from "./EditButtons";
+import PropTypes from 'prop-types';
 
 class AddList extends Component {
     
@@ -52,5 +53,10 @@ render() {
     );
 }
 }
+
+AddList.propTypes = {
+    boardId: PropTypes.func,
+    toggleAddingList: PropTypes.func
+};
 
 export default connect()(AddList);

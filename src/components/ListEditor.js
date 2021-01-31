@@ -3,6 +3,7 @@ import "../styles/ListEditor.css";
 
 import React, { Component } from "react";
 import TextareaAutosize from "react-textarea-autosize";
+import PropTypes from 'prop-types';
 
 class ListEditor extends Component {
 ref = React.createRef();
@@ -49,5 +50,10 @@ render() {
     );
 }
 }
+
+ListEditor.propTypes = {
+    title: PropTypes.string,
+    list: PropTypes.object
+};
 
 export default ListEditor;

@@ -6,6 +6,7 @@ import { DragDropContext, Droppable } from "react-beautiful-dnd";
 import BoardEditor from "./BoardEditor";
 import List from "./List";
 import AddList from "./AddList";
+import PropTypes from 'prop-types';
 
 import { Redirect } from "react-router-dom";
 
@@ -137,6 +138,11 @@ render() {
     );
 };
 }
+
+BoardEditor.propTypes = {
+    board: PropTypes.object,
+    boardId: PropTypes.string
+};
 
 const mapStateToProps = (state, ownProps) => ({
 board: state.boardsById[ownProps.boardId]

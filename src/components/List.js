@@ -2,6 +2,7 @@ import "../styles/List.css";
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 import Card from "./Card";
 
@@ -126,6 +127,13 @@ class List extends Component {
         );
     }
 }
+
+List.propTypes = {
+    boardId: PropTypes.string,
+    listId: PropTypes.string,
+    list: PropTypes.object,
+    index: PropTypes.number
+};
 
 const mapStateToProps = (state, ownProps) => ({
     list: state.listsById[ownProps.listId]

@@ -2,6 +2,7 @@ import { Link } from "react-router-dom";
 
 import React, { Component } from "react";
 import { connect } from "react-redux";
+import PropTypes from 'prop-types';
 
 import AddBoard from "./AddBoard";
 
@@ -43,6 +44,10 @@ render() {
             );
 }
 }
+
+App.propTypes = {
+    main: PropTypes.object
+};
 
 const mapStateToProps = state => ({ main: state.main });
 
