@@ -22,10 +22,10 @@ createBoard = async () => {
 
     this.props.toggleAddingBoard();
 
-    dispatch({
-    type: "ADD_BOARD",
-    payload: { boardId: shortid.generate(), boardTitle: title }
-    });
+        dispatch({
+            type: "ADD_BOARD",
+            payload: { boardId: shortid.generate(), boardTitle: title }
+        });
 };
 
 render() {
@@ -42,7 +42,7 @@ render() {
         />
 
         <EditButtons
-        handleSave={this.createBoard}
+        handleSave={ title ? this.createBoard : () => ( null )}
         saveLabel={"Add board"}
         handleCancel={toggleAddingBoard}
         />

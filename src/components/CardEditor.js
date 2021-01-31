@@ -40,7 +40,7 @@ render() {
         />
         </div>
         <EditButtons
-        handleSave={() => onSave(text)}
+        handleSave={text ? () => onSave(text) : () => ( null )}
         saveLabel={adding ? "Add card" : "Save"}
         handleDelete={onDelete}
         handleCancel={onCancel}

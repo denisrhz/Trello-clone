@@ -84,7 +84,7 @@ class List extends Component {
                         list={list}
                         title={title}
                         handleChangeTitle={this.handleChangeTitle}
-                        saveList={this.editListTitle}
+                        saveList={title ? this.editListTitle : () => ( null )}
                         onClickOutside={this.editListTitle}
                         deleteList={this.deleteList}
                     />

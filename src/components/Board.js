@@ -103,7 +103,7 @@ render() {
                         board={board}
                         title={title}
                         handleChangeTitle={this.handleChangeTitle}
-                        saveBoard={this.editBoardTitle}
+                        saveBoard={title ? this.editBoardTitle : () => ( null )}
                         onClickOutside={this.editBoardTitle}
                         deleteBoard={this.deleteBoard}
                     />

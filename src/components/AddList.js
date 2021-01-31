@@ -46,7 +46,7 @@ render() {
         />
 
         <EditButtons
-        handleSave={this.createList}
+        handleSave={ title ? this.createList : () => ( null )}
         saveLabel={"Add list"}
         handleCancel={toggleAddingList}
         />
