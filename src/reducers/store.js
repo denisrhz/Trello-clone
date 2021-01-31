@@ -99,7 +99,7 @@ const boardsById = (state = { lists: [] }, action) => {
     }
 };
 
-const listsById = (state = {}, action) => {
+const listsById = (state = { boards: [] }, action) => {
     switch (action.type) {
     case "ADD_LIST": {
         const { listId, listTitle } = action.payload;
