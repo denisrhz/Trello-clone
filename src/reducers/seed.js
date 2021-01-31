@@ -1,7 +1,6 @@
 import shortid from "shortid";
 
 export default store => {
-console.log("Insert first board");
 const firstBoardId = shortid.generate();
 
 store.dispatch({

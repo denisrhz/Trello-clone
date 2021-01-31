@@ -1,7 +1,12 @@
-import { combineReducers, createStore } from "redux";
+import { combineReducers, applyMiddleware, createStore } from "redux";
+import { createLogger } from 'redux-logger'
 import throttle from "lodash.throttle";
 
 import seed from "./seed";
+
+const logger = createLogger({
+    diff: true,
+});
 
 const main = (state = { boards: [] }, action) => {
     console.log('action', action.payload)
@@ -59,7 +64,6 @@ const boardsById = (state = { lists: [] }, action) => {
         sourceBoardId,
         destBoardId
         } = action.payload;
-        // Move within the same list
         if (sourceBoardId === destBoardId) {
         const newLists = Array.from(state[sourceBoardId].lists);
         const [removedList] = newLists.splice(oldListIndex, 1);
@@ -69,7 +73,6 @@ const boardsById = (state = { lists: [] }, action) => {
             [sourceBoardId]: { ...state[sourceBoardId], lists: newLists }
         };
         }
-        // Move card from one list to another
         const sourceLists = Array.from(state[sourceBoardId].lists);
         const [removedList] = sourceLists.splice(oldListIndex, 1);
         const destinationLists = Array.from(state[destBoardId].lists);
@@ -131,7 +134,6 @@ const listsById = (state = {}, action) => {
         sourceListId,
         destListId
         } = action.payload;
-        // Move within the same list
         if (sourceListId === destListId) {
         const newCards = Array.from(state[sourceListId].cards);
         const [removedCard] = newCards.splice(oldCardIndex, 1);
@@ -141,7 +143,6 @@ const listsById = (state = {}, action) => {
             [sourceListId]: { ...state[sourceListId], cards: newCards }
         };
         }
-        // Move card from one list to another
         const sourceCards = Array.from(state[sourceListId].cards);
         const [removedCard] = sourceCards.splice(oldCardIndex, 1);
         const destinationCards = Array.from(state[destListId].cards);
@@ -183,7 +184,6 @@ const cardsById = (state = {}, action) => {
         const { [cardId]: deletedCard, ...restOfCards } = state;
         return restOfCards;
     }
-    // Find every card from the deleted list and remove it
     case "DELETE_LIST": {
         const { cards: cardIds } = action.payload;
         return Object.keys(state)
@@ -210,7 +210,6 @@ const saveState = state => {
     const serializedState = JSON.stringify(state);
     localStorage.setItem("state", serializedState);
     } catch {
-    // ignore write errors
     }
 };
 
@@ -227,18 +226,13 @@ const loadState = () => {
 };
 
 const persistedState = loadState();
-const store = createStore(reducers, persistedState);
+const store = createStore(reducers, persistedState, applyMiddleware(logger));
 
 store.subscribe(
     throttle(() => {
     saveState(store.getState());
     }, 1000)
 );
-
-// store.dispatch({
-//     type: "DELETE_BOARD",
-//     payload: { boardId: store.getState().main.boards[0] }
-// });
 
 if (!store.getState().main.boards.length) {
 console.log("SEED");

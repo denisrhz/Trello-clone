@@ -6,7 +6,7 @@ import App from "./components/App";
 import Board from "./components/Board";
 
 import { Provider } from "react-redux";
-import store from "./store";
+import store from "./reducers/store";
 
 import { BrowserRouter, Route, useParams, Link } from "react-router-dom";
 

@@ -36,7 +36,7 @@ class Board extends Component {
     };
 
     deleteBoard = async () => {
-        const { boardId, board, dispatch } = this.props;
+        const { boardId, dispatch } = this.props;
 
         dispatch({
             type: "DELETE_BOARD",
@@ -89,7 +89,6 @@ class Board extends Component {
 render() {
     
     const board = this.props.board;
-    console.log('aaaa', board)
     const { editingTitle, addingList, title } = this.state;
 
     return (
