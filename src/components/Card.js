@@ -10,10 +10,13 @@ import PropTypes from 'prop-types';
 
 class Card extends Component {
 
-    state = {
-        hover: false,
-        editing: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = { 
+            hover: false,
+            editing: false
+        };
+    }
     
     startHover = () => this.setState({ hover: true });
     endHover = () => this.setState({ hover: false });

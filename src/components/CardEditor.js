@@ -6,9 +6,11 @@ import EditButtons from "./EditButtons";
 import PropTypes from 'prop-types';
 
 class CardEditor extends Component {
-state = {
-    text: this.props.text || ""
-};
+
+    constructor(props) {
+        super(props);
+        this.state = { text: this.props.text || "" };
+    }
 
 handleChangeText = event => this.setState({ text: event.target.value });
 

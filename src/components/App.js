@@ -10,9 +10,10 @@ import "../styles/App.css";
 
 class App extends Component {
 
-    state = {
-        addingBoard: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = { addingBoard: false };
+    }
 
     toggleAddingBoard = () =>
     this.setState({ addingBoard: !this.state.addingBoard });

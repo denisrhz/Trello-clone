@@ -13,12 +13,15 @@ import { Redirect } from "react-router-dom";
 import "../styles/Board.css";
 
 class Board extends Component {
-    
-    state = {
-        editingTitle: false,
-        title: this.props.board.title || NaN,
-        addingList: false
-    };
+
+    constructor(props) {
+        super(props);
+        this.state = { 
+            editingTitle: false,
+            title: this.props.board.title || NaN,
+            addingList: false
+        };
+    }
 
     toggleEditingTitle = () => this.setState({ editingTitle: !this.state.editingTitle });
 

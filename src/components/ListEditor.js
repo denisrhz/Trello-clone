@@ -6,6 +6,7 @@ import TextareaAutosize from "react-textarea-autosize";
 import PropTypes from 'prop-types';
 
 class ListEditor extends Component {
+
 ref = React.createRef();
 
 onEnter = e => {

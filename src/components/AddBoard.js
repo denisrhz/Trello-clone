@@ -9,9 +9,10 @@ import PropTypes from 'prop-types';
 
 class AddBoard extends Component {
 
-state = {
-    title: ""
-};
+    constructor(props) {
+        super(props);
+        this.state = { title: "" };
+    }
 
 handleChangeTitle = e => this.setState({ title: e.target.value });
 

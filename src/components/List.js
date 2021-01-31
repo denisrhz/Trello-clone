@@ -16,11 +16,14 @@ import { Droppable, Draggable } from "react-beautiful-dnd";
 
 class List extends Component {
 
-    state = {
-        editingTitle: false,
-        title: this.props.list.title,
-        addingCard: false
-    };
+    constructor(props) {
+        super(props);
+        this.state = { 
+            editingTitle: false,
+            title: this.props.list.title,
+            addingCard: false
+        };
+    }
     
     toggleAddingCard = () =>
     this.setState({ addingCard: !this.state.addingCard });
